@@ -1,11 +1,16 @@
 <?
-namespace Infoservice\TestTask\Helpers;
+namespace CompanyName\SolutionCode\Helpers;
 
 use \Bitrix\Main\Config\Option;
+use \CompanyName\SolutionCode\Helpers\Builders;
 
 abstract class Options
 {
     const OPTION_NAME = 'installed';
+
+    use Builders\NameSpaceTrait {
+        getModuleId as protected getTraitModuleId;
+    }
 
     /**
      * При создании дополнительных модулей с наследованием от текущего
@@ -22,10 +27,7 @@ abstract class Options
      */
     protected static function getModuleId()
     {
-        return (
-            static::$moduleId ??
-            static::$moduleId = strtolower(implode('.', array_slice(preg_split('/\W+/', get_called_class()), 0, -2)))
-        );
+        return static::$moduleId ?? static::$moduleId = self::getTraitModuleId();
     }
 
     /**

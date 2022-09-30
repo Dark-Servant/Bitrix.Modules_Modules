@@ -1,5 +1,7 @@
 <?
-namespace Infoservice\TestTask\EventHandles;
+namespace CompanyName\SolutionCode\EventHandles;
+
+use \Bitrix\Main\Loader;
 
 abstract class Employment
 {
@@ -11,7 +13,7 @@ abstract class Employment
      *
      * @return boolean
      */
-    public static function setBussy(string $methodName = '')
+    public static function setBussy()
     {
         if (self::$bussyStatus) return false;
 
@@ -120,8 +122,6 @@ abstract class Employment
                 break;
             }
         }
-
-        self::setFree();
         return $result;
     }
 }

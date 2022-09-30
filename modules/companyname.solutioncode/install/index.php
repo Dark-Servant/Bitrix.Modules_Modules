@@ -4,9 +4,9 @@ use Bitrix\Main\{
     Loader,
     Config\Option
 };
-use Infoservice\TestTask\EventHandles\Employment;
+use CompanyName\SolutionCode\EventHandles\Employment;
 
-class infoservice_testtask extends CModule
+class companyname_solutioncode extends CModule
 {
     public $MODULE_ID;
     public $MODULE_NAME;
@@ -41,7 +41,7 @@ class infoservice_testtask extends CModule
      * 
      * @return string
      */
-    protected function getModuleId()
+    public function getModuleId()
     {
         if ($this->MODULE_ID) return $this->MODULE_ID;
 
@@ -54,7 +54,7 @@ class infoservice_testtask extends CModule
      * 
      * @return string
      */
-    protected function getNameSpaceValue()
+    public function getNameSpaceValue()
     {
         if ($this->nameSpaceValue) return $this->nameSpaceValue;
 
@@ -67,7 +67,7 @@ class infoservice_testtask extends CModule
      * 
      * @return string
      */
-    protected function getOptionsClass()
+    public function getOptionsClass()
     {
         if ($this->optionClass) return $this->optionClass;
 
