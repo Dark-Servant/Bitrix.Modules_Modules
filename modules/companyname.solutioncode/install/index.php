@@ -30,7 +30,7 @@ class companyname_solutioncode extends CModule
     {
         if ($this->moduleClassPath) return $this->moduleClassPath;
 
-        $this->moduleClass = new \ReflectionClass(get_called_class());
+        $this->moduleClass = new \ReflectionClass(static::class);
         // не надо заменять на __DIR__, так как могут быть дополнительные модули $this->moduleClassPath
         $this->moduleClassPath = rtrim(preg_replace('/[^\/\\\\]+$/', '', $this->moduleClass->getFileName()), '\//');
         return $this->moduleClassPath;
@@ -102,7 +102,7 @@ class companyname_solutioncode extends CModule
         $constant = $this->moduleClass->getReflectionConstant($constName);
         if (
             ($constant === false)
-            || ($constant->getDeclaringClass()->getName() != get_called_class())
+            || ($constant->getDeclaringClass()->getName() != static::class)
         ) return [];
 
         return $constant->getValue();
@@ -113,7 +113,7 @@ class companyname_solutioncode extends CModule
         $this->getOptionsClass();
         Loc::loadMessages($this->getModuleClassPath() . '/' . basename(__FILE__));
 
-        $this->subLocTitle = strtoupper(get_called_class()) . '_';
+        $this->subLocTitle = strtoupper(static::class) . '_';
         $this->MODULE_NAME = Loc::getMessage($this->subLocTitle . 'MODULE_NAME');
         $this->MODULE_DESCRIPTION = Loc::getMessage($this->subLocTitle . 'MODULE_DESCRIPTION');
 

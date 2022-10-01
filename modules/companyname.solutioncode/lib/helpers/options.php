@@ -25,9 +25,9 @@ abstract class Options
      * 
      * @return string
      */
-    protected static function getModuleId()
+    public static function getModuleId()
     {
-        return static::$moduleId ?? static::$moduleId = self::getTraitModuleId();
+        return static::$moduleId ?? static::$moduleId = self::getTraitModuleId(static::class);
     }
 
     /**
